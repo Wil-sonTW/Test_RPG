@@ -33,9 +33,15 @@ public class Battle {
 
             player.getSkillManager().reduceCooldowns();
 
+            // Suggestions: 
+            // (1) - Less redondancy action. 
+            // (2) - Consistency in the order of the actions
             if (player.getInitiative() >= enemy.getInitiative()) {
 
 
+                // (2) 
+                // Here, the order of the actions are: display -> turn
+                // but a bit lower it becomes: turn -> display
                 displayStatus();
 
                 playerTurn();
@@ -50,6 +56,12 @@ public class Battle {
             }
             else {
 
+                // (1)
+                // Here, both the "if" and the "else" starts with "displayStatus" action.
+                // To reduce repeating code, depending on the wanted behavior, it may be a good idea to call that method BEFORE the if(player.getInitiative() >= enemy.getInitiative()) condition
+                // (2)
+                // Also, now we have: display -> turn -> display.
+                // And a bit lower just: turn
                 displayStatus();
 
                 enemyTurn();
