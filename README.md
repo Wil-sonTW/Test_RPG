@@ -4,7 +4,7 @@ A turn-based RPG on Java inspired by classic JRPGs.
 
 ## About
 
-This project started a a way to learn OOP.
+This project started as a way to learn OOP.
 
 Eventually, I hope to get this console prototype as a full playable 2D RPG with a graphic interface.
 
@@ -16,7 +16,7 @@ Eventually, I hope to get this console prototype as a full playable 2D RPG with 
   - Defend
   - Inventory (potions only)
 - 3 playable classes
-  - Guerrier (Warrio -- I mixed my french and english while coding)
+  - Guerrier (Warrior -- I mixed my french and english while coding)
   - Ranger
   - Mage
 - Cooldown system for skills (still raw and not balanced)
@@ -34,7 +34,7 @@ Eventually, I hope to get this console prototype as a full playable 2D RPG with 
 - Git/Github
 - VSC
 
-## Whats done
+## What's done
 
 ### Project 1 (console version)
 
