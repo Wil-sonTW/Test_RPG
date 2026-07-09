@@ -1,18 +1,64 @@
-## Getting Started
+# Test_RPG
 
-Welcome to the VS Code Java world. Here is a guideline to help you get started to write Java code in Visual Studio Code.
+A turn-based RPG on Java inspired by classic JRPGs.
 
-## Folder Structure
+## About
 
-The workspace contains two folders by default, where:
+This project started a a way to learn OOP.
 
-- `src`: the folder to maintain sources
-- `lib`: the folder to maintain dependencies
+Eventually, I hope to get this console prototype as a full playable 2D RPG with a graphic interface.
 
-Meanwhile, the compiled output files will be generated in the `bin` folder by default.
+## Current Features
 
-> If you want to customize the folder structure, open `.vscode/settings.json` and update the related settings there.
+- Turn-bases combat
+  - Attack
+  - Skills
+  - Defend
+  - Inventory (potions only)
+- 3 playable classes
+  - Guerrier (Warrio -- I mixed my french and english while coding)
+  - Ranger
+  - Mage
+- Cooldown system for skills (still raw and not balanced)
+- Experience and level progression (non linear)
+- Save/Load system (.txt)
+- Critical hits
+- Defense mechanic
+  - defense cancel crit from enemies
+- Random enemy encounters
 
-## Dependency Management
+## Tech
 
-The `JAVA PROJECTS` view allows you to manage your dependencies. More details can be found [here](https://github.com/microsoft/vscode-java-dependency#manage-dependencies).
+- Java 21
+- OOP
+- Git/Github
+- VSC
+
+## Whats done
+
+### Project 1 (console version)
+
+- Character creation
+- Battle system
+- Skills
+- Inventory
+- Save/Load
+- Experience System
+
+## To-doNext
+
+- Graphical interface
+- Character sprites
+- Animated battles
+- World Map
+- NPCs
+- Dialogues
+- Equipment system
+- Boss fights
+- Quests
+
+## Author
+
+**Wilson (Wil-sonTw)**
+
+
