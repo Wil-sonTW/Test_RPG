@@ -1,11 +1,13 @@
 package save;
 
+//Java imports
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Scanner;
 
+//Game imports
 import characters.Player;
 import characters.PlayerClass;
 import skills.BigStrike;
@@ -16,6 +18,7 @@ import items.*;
 
 public class SaveManager {
     
+    //Save all the information in a .txt file
     public static void save(Player player) {
 
         try {
@@ -61,6 +64,7 @@ public class SaveManager {
         }
     }
 
+    //load the characters informations saved in a .txt file
     public static Player load() {
 
         try {

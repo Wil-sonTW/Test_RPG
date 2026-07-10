@@ -7,6 +7,7 @@ public abstract class Skill {
     private int cooldown;
     private int currentCooldown;
 
+    //constructor
     public Skill(
         String name,
         String desc,
@@ -18,12 +19,12 @@ public abstract class Skill {
         this.currentCooldown = 0;
     }
 
-    public abstract double getDamageMultiplier();
-
+    //activate the cooldown
     public void startCooldown() {
         currentCooldown = cooldown;
     }
 
+    //verify if the skill is on cooldown and reduce if needed
     public void reduceCooldown() {
 
         if (currentCooldown > 0) {
@@ -31,6 +32,7 @@ public abstract class Skill {
         }
     }
 
+    //to verify if the skill is ready or on cooldown
     public boolean isReady() {
         return currentCooldown ==0;
     }
@@ -51,6 +53,8 @@ public abstract class Skill {
     public int getCurrentCooldown() {
         return currentCooldown;
     }
+
+    public abstract double getDamageMultiplier();
 
     //setters
     public void setCurrentCooldown(int cooldown) {

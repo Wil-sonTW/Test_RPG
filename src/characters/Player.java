@@ -1,5 +1,6 @@
 package characters;
 
+//Game imports
 import items.*;
 import skills.*;
 
@@ -47,7 +48,7 @@ public class Player extends Character {
         }
     }
 
-    //2e constructeur pour loader save
+    //2nd constructor when the game load a player
     public Player(
         String name,
         PlayerClass playerClass,
@@ -69,7 +70,7 @@ public class Player extends Character {
         this.skillManager = new SkillManager();
     }
 
-    //method pour xp
+    //When gaining xp
     public void gainXp(int amount) {
         xp += amount;
 
@@ -82,7 +83,7 @@ public class Player extends Character {
          }
     }
 
-    //method lvl up
+    //method for level up and stats upgrade
     private void levelUp(){
 
         level++;
@@ -100,13 +101,13 @@ public class Player extends Character {
         );
     }
 
-    //method pour calcul xpNextLevel
+    //method for a non-linear level progression
     private int calculateXpToNextLevel() {
         return (int) (100 * Math.pow(level, 1.5));
     }
 
 
-    //getters
+    //--------------getters---------------
     public int getLevel() {
         return level;
     }
@@ -131,7 +132,7 @@ public class Player extends Character {
         return playerClass;
     }
 
-    //setters
+    //----------------setters---------------------------------
     public void setLevel(int level) {
         this.level = level;
     }

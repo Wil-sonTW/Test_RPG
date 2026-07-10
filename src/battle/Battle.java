@@ -1,42 +1,41 @@
 package battle;
 
+//Java imports
 import java.util.Scanner;
 import java.util.Random;
 
+//Game imports
 import characters.Enemy;
 import characters.Player;
 import save.SaveManager;
 import characters.Character;
 import skills.*;
 
-
 public class Battle {
 
     private Player player;
     private Enemy enemy;
-    private Scanner scanner;
-    private Random random;
+    private final Scanner scanner = new Scanner(System.in);
+    private final Random random = new Random();
     private static final double critMulti = 1.5;
 
     public Battle(Player player, Enemy enemy) {
         this.player = player;
         this.enemy = enemy;
-        this.scanner = new Scanner(System.in);
-        random = new Random();
     }
 
+    /*  Method that manage the flow of a battle based on the initiative */
     public void startBattle() {
 
         System.out.println("Un " + enemy.getName() + " apparaît !");
 
+        //Loop until the player or the enemy is dead
         while (player.isAlive() && enemy.isAlive()) {
 
             player.getSkillManager().reduceCooldowns();
 
+            //Player's turn first
             if (player.getInitiative() >= enemy.getInitiative()) {
-
-
-                displayStatus();
 
                 playerTurn();
 
@@ -45,16 +44,11 @@ public class Battle {
                 }
 
                 enemyTurn();
-
-                displayStatus();
             }
+            //Enemy's turn first
             else {
 
-                displayStatus();
-
                 enemyTurn();
-
-                displayStatus();
 
                 if (!enemy.isAlive() || !player.isAlive()) {
                     break;
@@ -62,17 +56,23 @@ public class Battle {
 
                 playerTurn();
             }
+
         }
 
         endBattle();
     }
 
+    //Method that manage the player's turn
     private void playerTurn() {
 
+        //It shows the combat status only when the player can do an action
+        displayStatus();
+
+        // while loop to manage a menu and return button
         while (true) {
 
             System.out.println("\n1. Attaquer");
-            System.out.println("2. Comptétences");
+            System.out.println("2. Compétences");
             System.out.println("3. Défendre");
             System.out.println("4. Inventaire");
             System.out.println("5. Sauvegarder");
@@ -122,9 +122,9 @@ public class Battle {
 
                 case 6:
 
-                    quitMenu();
-
-                    break;
+                    if (quitMenu()) {
+                        return;
+                    }
 
                 default:
                     
@@ -133,6 +133,7 @@ public class Battle {
         }
     }
 
+    //The enemy only has the attack action for now
     private void enemyTurn() {
 
         int damage = calculateDamage(enemy, player);
@@ -141,7 +142,6 @@ public class Battle {
             damage /= 2;
             player.stopDefending();
         }
-
 
         player.takeDamage(damage);
 
@@ -153,6 +153,7 @@ public class Battle {
         );
     }
 
+    //Show level, hp, and xp during combat
     private void displayStatus() {
         System.out.println("=============================================");
 
@@ -171,6 +172,7 @@ public class Battle {
         System.out.println("=============================================");
     }
 
+    //verify if the player is alive at the end of the combat
     private void endBattle() {
 
         if (player.isAlive()) {
@@ -183,6 +185,7 @@ public class Battle {
         }
     }
 
+    //manage the attack action for the player
     private void attack() {
 
         int damage = calculateDamage(player, enemy);
@@ -193,10 +196,11 @@ public class Battle {
             player.getName() +
             " attaque et inflige " +
             damage +
-            " dégats"
+            " dégâts"
         );
     }
 
+    //manage the defend action
     private void defend() {
 
         player.setDefending(true);
@@ -207,6 +211,7 @@ public class Battle {
         );
     }
 
+    //manage the openInventory action -- open the inventory
     private boolean openInventory() {
         while (true) {
 
@@ -217,6 +222,7 @@ public class Battle {
 
             int choice = scanner.nextInt();
 
+            //back to the menu
             if (choice == 0) {
                 return false;
             }
@@ -229,6 +235,7 @@ public class Battle {
         }
     }
 
+    //manage the Skill action -- shows the skillMenu
     private boolean skillMenu() {
 
         while (true) {
@@ -251,13 +258,14 @@ public class Battle {
                 continue;
             }
 
+            //verify if the skill's cooldown
             if (!skill.isReady()) {
 
                 System.out.println("Cette compétence est en recharge");
                 continue;
             }
 
-            //utilisation de la compétence
+            //Use the skill and call the method for damage
 
             int damage = calculateDamage(
                 player,
@@ -282,6 +290,7 @@ public class Battle {
         }
     }
 
+    //verify if the the damage is a crit -- random
     private boolean isCrit(Character attacker) {
 
         return random.nextDouble() < attacker.getCritChance();
@@ -293,14 +302,18 @@ public class Battle {
         return calculateDamage(attacker, defender, 1.0);
     }
     
+    //calculate damage based on the base attack, variance and if it's a critical hit
     private int calculateDamage(Character attacker, Character defender, double multiplier) {
 
         int damage = attacker.getAttack();
 
+        //round the damage to keep it as an int
         damage = (int) Math.round(damage * multiplier);
 
+        //variance before critical hit
         damage = applyVariance(damage);
 
+        //critical multiplier at the end 
         if (isCrit(attacker) && !defender.isDefending()) {
             
             damage = applyCrit(damage);
@@ -310,6 +323,7 @@ public class Battle {
         return damage;
     }
 
+    //method that apply Variance in damage to add a little dynamic
     private int applyVariance(int damage) {
 
         double multiplier = 0.85 + random.nextDouble() * 0.25;
@@ -317,6 +331,7 @@ public class Battle {
         return (int)(damage * multiplier);
     }
 
+    //method that add the critical multiplier to the damage
     private int applyCrit(int damage) {
 
         System.out.println("C'est un coup critique ! ");
@@ -324,6 +339,7 @@ public class Battle {
         return (int) Math.round(damage * critMulti);
     }
 
+    //the menu for the quit action -- choice to save or not -- or to cancel
     private boolean quitMenu() {
 
         System.out.println("=====Quitter=====");

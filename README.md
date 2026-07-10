@@ -61,4 +61,38 @@ Eventually, I hope to get this console prototype as a full playable 2D RPG with 
 
 **Wilson (Wil-sonTw)**
 
+## Tech
+
+- Java 21
+- OOP
+- Git/Github
+- VSC
+
+## What's done
+
+### Project 1 (console version)
+
+- Character creation
+- Battle system
+- Skills
+- Inventory
+- Save/Load
+- Experience System
+
+## To-doNext
+
+- Graphical interface
+- Character sprites
+- Animated battles
+- World Map
+- NPCs
+- Dialogues
+- Equipment system
+- Boss fights
+- Quests
+
+## Author
+
+**Wilson (Wil-sonTw)**
+
 
