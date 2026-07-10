@@ -2,3 +2,4 @@ bin/
 save.txt
 .vscode/
 *.class
+lib/javafx-sdk*/
