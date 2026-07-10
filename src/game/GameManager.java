@@ -16,6 +16,7 @@ public class GameManager {
 
         System.out.println("TestRpg a game in developpement");
 
+        //while loop for start menu
         while (player == null) {
 
             System.out.println("=====TestRpg=====");
@@ -49,6 +50,7 @@ public class GameManager {
         }
     }
 
+    //if the player want to load a save
     private void continuePlayer() {
 
         player = SaveManager.load();
@@ -63,6 +65,7 @@ public class GameManager {
         System.out.println("C'est l'histoire de " + player.getName() + " qui continue");
     }
 
+    //if the player want to start a new game
     private void createNewPlayer() {
 
         System.out.println("Entrez le nom de votre héro : ");
@@ -84,6 +87,7 @@ public class GameManager {
         PlayerClass playerClass = null;
         int choice;
 
+        //manage the class selection in the character creation
         while (playerClass == null) {
 
             choice = scanner.nextInt();
@@ -104,7 +108,7 @@ public class GameManager {
         System.out.println("C'est le début de ton histoire " + player.getName() + " ! ");
     }
 
-
+    //loop for the game to continue sending enemies while the player is alive
     public void startGame() {
 
         while (player.isAlive()){
@@ -129,6 +133,7 @@ public class GameManager {
         System.out.println(player.getName() + " c'est la fin de votre aventure...");
     }
 
+    //method to display all class relevant stats
     private void displayClass(PlayerClass playerClass, int number) {
 
         System.out.println(number + "." + playerClass);

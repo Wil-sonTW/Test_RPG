@@ -14,6 +14,7 @@ public class SkillManager {
         skills.add(skill);
     }
 
+    //Show the skill list
     public void displaySkills() {
 
         System.out.println("===Compétences===");
@@ -22,6 +23,7 @@ public class SkillManager {
 
             Skill skill = skills.get(i);
 
+            //Show the skill if it is available for use
             if (skill.getCurrentCooldown() == 0) {
 
                 System.out.println(
@@ -32,6 +34,7 @@ public class SkillManager {
                     skill.getDesc()
                 );
             }
+            //Show the skill if it is on cooldown
             else {
                 
                 System.out.println(
@@ -46,12 +49,14 @@ public class SkillManager {
         }
     }
 
+
     public void reduceCooldowns() {
         for (Skill skill : skills) {
             skill.reduceCooldown();
         }
     }
 
+    //------getters------------
     public Skill getSkill(int index) {
         
         if (index < 0 || index >= skills.size()) {

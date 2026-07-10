@@ -24,6 +24,7 @@ public enum PlayerClass {
     private final String description;
     private final double critChance;
 
+    //constructor
     PlayerClass(int hp, int attack, int initiative, double critChance, String description) {
         this.hp = hp;
         this.attack = attack;
@@ -33,7 +34,7 @@ public enum PlayerClass {
     }
 
 
-    //getters
+    //---------------getters--------------
     public int getHp() {
         return hp;
     }

@@ -1,5 +1,6 @@
 package battle;
 
+//Java imports
 import java.util.Random;
 import characters.Enemy;
 
@@ -7,11 +8,11 @@ public class EnemyRandom {
     
     private static Random random = new Random();
 
-
     public static Enemy spawnRandomEnemy() {
 
         int choice = random.nextInt(4);
 
+        //with the random int -- randomly take one of these
         switch(choice) {
             
             case 0:
@@ -29,9 +30,5 @@ public class EnemyRandom {
             default:
                 return new Enemy("Goblin", 40, 8, 3,0.05, 50);
         }
-
     }
-
-
-
 }

@@ -10,6 +10,7 @@ public abstract class Character {
     protected double critChance;
     protected boolean defending;
 
+    //Constructor
     public Character(String name, int hp, int attack, int initiative, double critChance) {
         this.name = name;
         this.hp = hp;
@@ -20,22 +21,27 @@ public abstract class Character {
         this.defending = false;
     }
 
+    //manage taking damage
     public void takeDamage(int damage) {
         hp -= damage;
 
+        //round the hp to 0 if below, for future implementation
         if (hp < 0) {
             hp = 0;
         }
     }
 
+    //manage healing
     public void healHP(int heal) {
         hp += heal;
 
+        //round the hp so it doesn´t go above the maxHp
         if(hp > maxHp) {
             hp = maxHp;
         }
     }
 
+    //verify if the character is above 0HP
     public boolean isAlive() {
         return hp > 0;
     }
