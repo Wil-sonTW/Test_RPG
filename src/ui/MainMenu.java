@@ -10,7 +10,7 @@ public class MainMenu {
     
     private VBox root;
 
-    public MainMenu() {
+    public MainMenu(Runnable onNewGame) {
 
         root = new VBox(20);
 
@@ -20,7 +20,7 @@ public class MainMenu {
         title.setStyle("-fx-font-size: 32px;");
 
         Button newGame = new Button("New game");
-            newGame.setOnAction(e -> System.out.println("New Game selected"));
+            newGame.setOnAction(e -> onNewGame.run());
         
         Button continueGame = new Button("Continue");
             continueGame.setOnAction(e -> System.out.println("Continue is selected"));
