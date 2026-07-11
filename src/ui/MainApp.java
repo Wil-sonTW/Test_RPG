@@ -2,8 +2,6 @@ package ui;
 
 import javafx.application.Application;
 import javafx.scene.Scene;
-import javafx.scene.control.Label;
-import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 
 public class MainApp extends Application {
@@ -11,11 +9,9 @@ public class MainApp extends Application {
     @Override
     public void start(Stage stage) {
 
-        Label label = new Label("Welcome to Test RPG!");
+        MainMenu menu = new MainMenu();
 
-        StackPane root = new StackPane(label);
-
-        Scene scene = new Scene(root, 800, 600);
+        Scene scene = new Scene(menu.getRoot(), 1000, 700);
 
         stage.setTitle("Test RPG");
         stage.setScene(scene);
