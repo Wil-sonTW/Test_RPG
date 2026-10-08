@@ -1,6 +1,13 @@
 # ChangeLog
 
-## Project 2 (In Progress)
+## Project 2 (Unreleased) - JAVAFX TESTS
+
+### 08-10-2026
+
+- Project 2 develoment is closed
+- This version represents various tests of JavaFX implementations
+- Decision was made to stop making the engine from nothing, the goal was developped java skills
+- Now the project aims to use a game engine (probably Godot)
 
 ### 09-07-2026
 
