@@ -15,12 +15,14 @@ public class MainFrame extends JFrame {
     private MainMenuPanel menuPanel;
     private CharacterCreationPanel characterCreationPanel;
     private GamePanel gamePanel;
+    private BattlePanel battlePanel;
     private GameManager gameManager;
 
 
     public static final String MENU = "menu";
     public static final String CHARACTER = "character";
     public static final String GAME = "game";
+    public static final String BATTLE = "battle";
 
     public MainFrame() {
 
@@ -30,7 +32,6 @@ public class MainFrame extends JFrame {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         gameManager = new GameManager();
-
         cardLayout = new CardLayout();
         mainPanel = new JPanel(cardLayout);
 
@@ -38,11 +39,13 @@ public class MainFrame extends JFrame {
         menuPanel = new MainMenuPanel(this);
         characterCreationPanel = new CharacterCreationPanel(this);
         gamePanel = new GamePanel(this);
+        battlePanel = new BattlePanel(this);
 
         //Add the scenes to the Layout
         mainPanel.add(menuPanel, MENU);
         mainPanel.add(characterCreationPanel, CHARACTER);
         mainPanel.add(gamePanel, GAME);
+        mainPanel.add(battlePanel, BATTLE);
 
         cardLayout.show(mainPanel, MENU);
 
@@ -58,6 +61,13 @@ public class MainFrame extends JFrame {
         gamePanel.playerInfo();
 
         showScreen(GAME);
+    }
+
+    public void startBattle() {
+        gameManager.createBattle();
+
+        battlePanel.refreshBattle();
+        showScreen(BATTLE);
     }
 
     public void showScreen(String screenName) {

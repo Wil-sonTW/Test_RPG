@@ -42,6 +42,9 @@ public class GamePanel extends JPanel {
         centerPanel = new JPanel();
         buttonPanel = new JPanel();
             battleButton = new JButton("Battle");
+                battleButton.addActionListener(e -> {
+                    mainFrame.startBattle();
+                });
             inventoryButton = new JButton("Inventory");
 
         setLayout(new BorderLayout());
